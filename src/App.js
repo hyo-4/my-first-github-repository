@@ -10,6 +10,7 @@ const ChangeVauleButton = styled.button`
   background-color: beige;
   font-size: 36px;
   border: 0;
+  color: blue;
   border-radius: 50%;
   width: 4rem;
   height: 4rem;
