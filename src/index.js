@@ -1,14 +1,31 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const initalState = 0;
+
+function reducer(state = initalState, action) {
+  if (action.type === 'INCREASE') {
+    state++;
+    return state;
+  } else if (action.type === 'DECREASE') {
+    state--;
+    return state;
+  } else {
+    return state;
+  }
+}
+
+let store = createStore(reducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

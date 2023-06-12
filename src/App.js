@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ChangeVauleButton = styled.button`
   display: inline-flex;
@@ -21,13 +22,29 @@ const ButtonWrapper = styled.div`
 `;
 
 function App() {
+  const num = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <ButtonWrapper>
-          <ChangeVauleButton>+</ChangeVauleButton>
-          <ChangeVauleButton>-</ChangeVauleButton>
+          <div>{num}</div>
+          <ChangeVauleButton
+            onClick={() => {
+              dispatch({ type: 'INCREASE' });
+            }}
+          >
+            +
+          </ChangeVauleButton>
+          <ChangeVauleButton
+            onClick={() => {
+              dispatch({ type: 'DECREASE' });
+            }}
+          >
+            -
+          </ChangeVauleButton>
         </ButtonWrapper>
       </header>
     </div>
